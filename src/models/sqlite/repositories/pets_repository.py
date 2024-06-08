@@ -24,5 +24,5 @@ class PetsRepository:
                 )
                 database.session.commit()
             except Exception as exception:
-                database.sesssion.rollback()
+                database.session.rollback()
                 raise exception
