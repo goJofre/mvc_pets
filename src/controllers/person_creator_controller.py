@@ -5,7 +5,7 @@ class PersonCreatorController:
     def __init__(self, people_repository:PeopleRepositoryInterface) -> None:
         self.__people_repository = people_repository
 
-    def crete(self, person_info: dict) -> dict:
+    def create(self, person_info: dict) -> dict:
         first_name = person_info["first_name"]
         last_name = person_info["last_name"]
         age = person_info["age"]

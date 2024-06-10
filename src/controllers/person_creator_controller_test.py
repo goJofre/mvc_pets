@@ -15,7 +15,7 @@ def test_create():
     }
 
     controller = PersonCreatorController(MockPeopleRepository())
-    response = controller.crete(person_info)
+    response = controller.create(person_info)
 
     assert response["data"]["type"] == "Person"
     assert response["data"]["count"] == 1
@@ -31,4 +31,4 @@ def test_create_error():
 
     controller = PersonCreatorController(MockPeopleRepository())
     with pytest.raises(Exception):
-        controller.crete(person_info)
+        controller.create(person_info)
