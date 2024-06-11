@@ -1,5 +1,5 @@
 from sqlalchemy.orm.exc import NoResultFound
-from src.models.sqlite.entities.people import PeaopleTable
+from src.models.sqlite.entities.people import PeopleTable
 from src.models.sqlite.entities.pets import PetsTable
 from src.models.sqlite.interfaces.people_repository import PeopleRepositoryInterface
 
@@ -10,7 +10,7 @@ class PeopleRepository(PeopleRepositoryInterface):
     def insert_person(self, first_name: str, last_name: str, age: int, pet_id: int) -> None:
         with self.__db_connection as database:
             try:
-                person_data = PeaopleTable(
+                person_data = PeopleTable(
                     first_name = first_name,
                     last_name = last_name,
                     age = age,
@@ -22,17 +22,17 @@ class PeopleRepository(PeopleRepositoryInterface):
                 database.session.rollback()
                 raise exception
 
-    def get_person(self, person_id: int) -> PeaopleTable:
+    def get_person(self, person_id: int) -> PeopleTable:
         with self.__db_connection as database:
             try:
                 person = (
                     database.session
-                        .query(PeaopleTable)
-                        .outerjoin(PetsTable, PetsTable.id == PeaopleTable.pet_id)
-                        .filter(PeaopleTable.id == person_id)
+                        .query(PeopleTable)
+                        .outerjoin(PetsTable, PetsTable.id == PeopleTable.pet_id)
+                        .filter(PeopleTable.id == person_id)
                         .with_entities(
-                            PeaopleTable.first_name,
-                            PeaopleTable.last_name,
+                            PeopleTable.first_name,
+                            PeopleTable.last_name,
                             PetsTable.name.label("pet_name"),
                             PetsTable.type.label("pet_type")
                         )
