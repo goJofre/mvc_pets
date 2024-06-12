@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
-from src.views.http_types import http_request
-from src.views.http_types import http_response
+from src.views.http_types.http_response import HttpResponse
+from src.views.http_types.http_request import HttpRequest
 
 class ViewInterace(ABC):
 
     @abstractmethod
-    def handle(self, http_resquest: http_request) -> http_response:
+    def handle(self, http_resquest: HttpRequest) -> HttpResponse:
         pass
