@@ -8,8 +8,8 @@ class PersonFinderView(ViewInterace):
     def __init__(self, controler: PersonFinderControllerInterface) -> None:
         self.__controler = controler
 
-    def handle(self, http_resquest: HttpRequest) -> HttpResponse:
-        person_id = http_resquest.param["person_id"]
+    def handle(self, http_request: HttpRequest) -> HttpResponse:
+        person_id = http_request.param["person_id"]
         body_response = self.__controler.find(person_id)
 
         return HttpResponse(status_code=200, body=body_response)

@@ -8,7 +8,7 @@ class PetListerView(ViewInterace):
     def __init__(self, controler: PetListerControllerInterface) -> None:
         self.__controler = controler
 
-    def handle(self, http_resquest: HttpRequest) -> HttpResponse:
+    def handle(self, http_request: HttpRequest) -> HttpResponse:
         body_response = self.__controler.list_pets()
 
         return HttpResponse(status_code=200, body=body_response)

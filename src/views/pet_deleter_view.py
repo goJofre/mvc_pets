@@ -8,8 +8,8 @@ class PetDeleterView(ViewInterace):
     def __init__(self, controler: PetDeleterControllerInterface) -> None:
         self.__controler = controler
 
-    def handle(self, http_resquest: HttpRequest) -> HttpResponse:
-        name = http_resquest.param["name"]
+    def handle(self, http_request: HttpRequest) -> HttpResponse:
+        name = http_request.param["name"]
         self.__controler.delete(name)
 
         return HttpResponse(status_code=204)
